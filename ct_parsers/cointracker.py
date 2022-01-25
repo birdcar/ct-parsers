@@ -34,3 +34,6 @@ VALID_SYMBOLS = {
     "XRP",
 }
 
+ValidationResult = namedtuple('ValidationResult', ('success', 'errors'))
+
+
