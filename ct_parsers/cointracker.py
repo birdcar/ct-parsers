@@ -37,3 +37,8 @@ VALID_SYMBOLS = {
 ValidationResult = namedtuple('ValidationResult', ('success', 'errors'))
 
 
+def validate_header(row: dict) -> bool:
+    """Verify header exactly matches our valid header."""
+    return tuple(row.keys()) != VALID_HEADER
+
+
