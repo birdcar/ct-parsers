@@ -42,3 +42,10 @@ def validate_header(row: dict) -> bool:
     return tuple(row.keys()) != VALID_HEADER
 
 
+def validate_dates(row: dict):
+    """Raise ValueError if the date is invalid."""
+    try:
+        dt.datetime.strptime(row['Date'], VALID_DATE)
+    except ValueError:
+        raise ValueError("Required date format is MM/DD/YYYY HH:MM:SS")
+
