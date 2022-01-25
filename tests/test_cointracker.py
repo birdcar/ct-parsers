@@ -3,7 +3,7 @@
 
 import pytest
 
-from ct_parsers.cointracker import VALID_SYMBOLS, validate
+from ct_parsers.cointracker import VALID_SYMBOLS, VALID_TAGS, validate
 
 
 def test_valid_file_parses_successfully(cointracker_kg_csv):
@@ -48,23 +48,3 @@ def test_invalid_decimal_count(cointracker_kb_decimals_csv):
     successful, errors = validate(cointracker_kb_decimals_csv)
     assert not successful
     assert errors == expected_errors
-
-
-def test_invalid_deposit_transaction():
-    """Compile each error and return it as a ValidationResult when deposit transactions are malformed."""
-    pass
-
-
-def test_invalid_withdrawl_transaction():
-    """Compile each error and return it as a ValidationResult when withdrawl transactions are malformed."""
-    pass
-
-
-def test_invalid_trade_transaction():
-    """Compile each error and return it as a ValidationResult when withdrawl transactions are malformed."""
-    pass
-
-
-def test_invalid_tag():
-    """Compile each error and return it as a ValidationResult when invalid Tags are used."""
-    pass

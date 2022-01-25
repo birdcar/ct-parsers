@@ -32,3 +32,15 @@ def cointracker_kb_symbols_csv() -> Path:
 def cointracker_kb_decimals_csv() -> Path:
     """Return the path to a CSV with some improperly truncated decimal values."""
     return Path(__file__).resolve(strict=True).parent / "fixtures" / "cointracker" / "kb_decimals.csv"
+
+
+@pytest.fixture
+def cointracker_kb_transactions_csv() -> Path:
+    """Return the path to a CSV with some improperly formed Deposit, Withdrawl, and Trade transactions."""
+    return Path(__file__).resolve(strict=True).parent / "fixtures" / "cointracker" / "kb_transactions.csv"
+
+
+@pytest.fixture
+def cointracker_kb_tags_csv() -> Path:
+    """Return the path to a CSV with some improperly formed Deposit, Withdrawl, and Trade transactions."""
+    return Path(__file__).resolve(strict=True).parent / "fixtures" / "cointracker" / "kb_tags.csv"
