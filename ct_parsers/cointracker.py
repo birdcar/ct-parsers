@@ -59,3 +59,15 @@ def validate_symbols(row: dict):
     if row["Fee Currency"] and row["Fee Currency"] not in VALID_SYMBOLS:
         raise ValueError(f"'Fee Currency' must be a one of {VALID_SYMBOLS}")
 
+
+def validate_decimal_places(row: dict):
+    """Raise ValueError if any number has more than 8 decimal places."""
+    if any(
+        [
+            len(row["Received Quantity"].split(".")[-1]) > 8,
+            len(row["Sent Quantity"].split('.')[-1]) > 8,
+            len(row["Fee Amount"].split('.')[-1]) > 8,
+        ]
+    ):
+        raise ValueError("Decimal numbers must be 8 decimal places or less")
+
