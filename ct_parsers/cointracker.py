@@ -18,3 +18,19 @@ VALID_HEADER = (
     "Tag",
 )
 
+VALID_DATE = "%m/%d/%Y %H:%M:%S"
+VALID_SYMBOLS = {
+    "USD",
+    "EUR" "GBP",
+    "BTC",
+    "ETH2",
+    "ETH",
+    "USDT",
+    "BNB",
+    "USDC",
+    "ADA",
+    "HEX",
+    "SOL",
+    "XRP",
+}
+
