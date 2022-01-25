@@ -49,3 +49,13 @@ def validate_dates(row: dict):
     except ValueError:
         raise ValueError("Required date format is MM/DD/YYYY HH:MM:SS")
 
+
+def validate_symbols(row: dict):
+    """Raise ValueError if any of the symbol columns are invalid."""
+    if row["Received Currency"] and row["Received Currency"] not in VALID_SYMBOLS:
+        raise ValueError(f"'Recieved Currency' must be a one of {VALID_SYMBOLS}")
+    if row["Sent Currency"] and row["Sent Currency"] not in VALID_SYMBOLS:
+        raise ValueError(f"'Sent Currency' must be a one of {VALID_SYMBOLS}")
+    if row["Fee Currency"] and row["Fee Currency"] not in VALID_SYMBOLS:
+        raise ValueError(f"'Fee Currency' must be a one of {VALID_SYMBOLS}")
+
