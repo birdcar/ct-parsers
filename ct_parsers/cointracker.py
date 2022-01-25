@@ -71,3 +71,29 @@ def validate_decimal_places(row: dict):
     ):
         raise ValueError("Decimal numbers must be 8 decimal places or less")
 
+
+def validate(file_path: Path, fail_fast: bool = False) -> ValidationResult:
+    """Validate a csv file is in the CoinTracker CSV format."""
+    errors: List[Tuple[int, str]] = list()
+
+    for row_idx, row in enumerate(read_csv_file(file_path)):
+        row_idx += 2  # increment the index to match the actual row in the file
+
+        try:
+            if row_idx == 2 and validate_header(row):
+                fail_fast = True
+                raise ValueError(f"{file_path.name} header must exactly match {VALID_HEADER}.")
+
+            validate_dates(row)
+            validate_symbols(row)
+            validate_decimal_places(row)
+
+        except Exception as err:
+            if fail_fast:
+                raise
+            else:
+                errors.append((row_idx, str(err)))
+    if errors:
+        return ValidationResult(False, errors)
+    else:
+        return ValidationResult(True, errors)
