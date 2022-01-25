@@ -34,10 +34,7 @@ VALID_SYMBOLS = {
     "XRP",
 }
 
-VALID_TAGS = {
-    'Withdrawl': {"fork", "airdrop", "mined", "payment", "staked"},
-    'Deposit': {"gift", "lost", "donation"}
-}
+VALID_TAGS = {'Withdrawl': {"fork", "airdrop", "mined", "payment", "staked"}, 'Deposit': {"gift", "lost", "donation"}}
 
 CHECK_TAGS = {
     'Withdrawl': lambda row: row['Tag'] in VALID_TAGS["Withdrawl"],
@@ -47,6 +44,7 @@ CHECK_TAGS = {
 
 ValidationResult = namedtuple('ValidationResult', ('success', 'errors'))
 TransactionType = namedtuple('TransactionType', ('type', 'data'))
+
 
 def validate_header(row: dict) -> bool:
     """Verify header exactly matches our valid header."""
@@ -101,7 +99,6 @@ def validate_transaction(transaction: TransactionType):
     elif transaction.data['Tag']:
         print(transaction.type, transaction.data)
         raise ValueError('Trade transactions may not have a Tag value')
-
 
 
 def validate(file_path: Path, fail_fast: bool = False) -> ValidationResult:
