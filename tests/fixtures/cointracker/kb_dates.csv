@@ -1,0 +1,5 @@
+Date,Received Quantity,Received Currency,Sent Quantity,Sent Currency,Fee Amount,Fee Currency,Tag
+2022-01-24T22:50:11.729420,0.5,BTCH,4005.8,USD,0.00001,BTC,
+08/19/2017 10:05:15,0.3,BTC,3,ETH,,,
+08/21/2017 12:00:00,,,3,ETH,0.0001,ETH,gift
+2022-01-24T22:50:12.729420,3,ETH,,,,,mined
